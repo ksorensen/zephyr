@@ -44,6 +44,10 @@ config I2C_INIT_PRIORITY
 	help
 	  I2C device driver initialization priority.
 
+config I2C_RECOVER_BUS
+	bool "Enable I2C bus recovery"
+	help
+	  Enable I2C bus recovery API.
 
 module = I2C
 module-str = i2c
