@@ -18,3 +18,13 @@ properties:
       required: false
       type: int
       description: Bus idle timeout in nanoseconds
+
+    scl-gpios:
+      type: phandle-array
+      required: false
+      description: SCL GPIO pin (optional, only used for bus recovery)
+
+    sda-gpios:
+      type: phandle-array
+      required: false
+      description: SDA GPIO pin (optional, only used for bus recovery)
