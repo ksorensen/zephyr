@@ -264,6 +264,30 @@ finish:
 	return result;
 }
 
+int i2c_bitbang_recover_bus(struct i2c_bitbang *context)
+{
+	int i;
+
+	/* Start condition */
+	i2c_start(context);
+
+	/* 9 cycles of SCL with SDA held high */
+	for (i = 0; i < 9; i++) {
+		i2c_write_bit(context, 1);
+	}
+
+	/* Another start condition followed by a stop condition */
+	i2c_repeated_start(context);
+	i2c_stop(context);
+
+	/* Check if bus is clear */
+	if (i2c_get_sda(context)) {
+		return 0;
+	} else {
+		return -EBUSY;
+	}
+}
+
 void i2c_bitbang_init(struct i2c_bitbang *context,
 			const struct i2c_bitbang_io *io, void *io_context)
 {
