@@ -34,6 +34,7 @@ list(APPEND
   DTS_ROOT
   ${APPLICATION_SOURCE_DIR}
   ${BOARD_DIR}
+  ${shield_dts_roots}
   ${ZEPHYR_BASE}
   )
 list(REMOVE_DUPLICATES
